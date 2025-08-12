@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	
+	<meta title="Cowboy" package="com.sample.cowboy" version="1.0.0" company="Company Name" />
+	<app main="Main" path="build" file="Cowboy" />
+	
+	<source path="source" />
+	
+	<haxelib name="openfl" />
+	
+	<assets path="assets" />
+
+	<window fps="244" vsync="true" />
+
+</project>
