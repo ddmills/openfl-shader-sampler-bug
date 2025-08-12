@@ -43,9 +43,10 @@ class Main extends Sprite
 	{
 		super();
 
-		var bm = Assets.getBitmapData("assets/cowboy.png");
+		var bm1 = Assets.getBitmapData("assets/cowboy.png");
+		var bm2 = Assets.getBitmapData("assets/tocky_8x12.png");
 		
-		glyphs = new GlyphBatch(bm);
+		glyphs = new GlyphBatch(bm1, bm2);
 		glyphs.createProgram(stage.context3D);
 		// glyphs.add({
 		// 	x: 2,
@@ -54,7 +55,7 @@ class Main extends Sprite
 		// 	height: 100,
 		// });
 
-		for (x in 0...1000) {
+		for (x in 0...10000) {
 			glyphs.add({
 				x: x,
 				y: x,
