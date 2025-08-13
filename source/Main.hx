@@ -1,5 +1,6 @@
 package;
 
+import lime.math.Vector4;
 import openfl.Assets;
 import openfl.Vector;
 import openfl.display.Bitmap;
@@ -48,21 +49,25 @@ class Main extends Sprite
 		
 		glyphs = new GlyphBatch(bm1, bm2);
 		glyphs.createProgram(stage.context3D);
-		// glyphs.add({
-		// 	x: 2,
-		// 	y: 3,
-		// 	width: 100,
-		// 	height: 100,
-		// });
 
-		for (x in 0...10000) {
-			glyphs.add({
-				x: x,
-				y: x,
-				width: 16 * 32,
-				height: 24 * 32,
-			});
+		for (x in 0...50) {
+			for (y in 0...50) {
+				glyphs.add({
+					x: x * 16,
+					y: y * 24,
+					width: 16,
+					height: 24,
+					idx: (x + y * 16) % 256,
+					texIdx: 0,
+					fg1: new Vector4(1, 0, 0, 1),
+					fg2: new Vector4(0, 1, 0, 1),
+					bg: new Vector4(0, 0, 1, 1),
+					outline: new Vector4(1, 0, 1, 1),
+				});
+			}
 		}
+
+		glyphs.clear();
 
 		var fps = new FPS();
 		addChild(fps);
@@ -72,6 +77,25 @@ class Main extends Sprite
 	private function onEnterFrame(event:Event):Void
 	{
 		stage.invalidate();
+		glyphs.clear();
+
+		for (x in 0...50) {
+			for (y in 0...50) {
+				glyphs.add({
+					x: x * 16,
+					y: y * 24,
+					width: 16,
+					height: 24,
+					idx: (x + y * 16) % 256,
+					texIdx: 0,
+					fg1: new Vector4(1, 0, 0, 1),
+					fg2: new Vector4(0, 1, 0, 1),
+					bg: new Vector4(0, 0, 1, 1),
+					outline: new Vector4(1, 0, 1, 1),
+				});
+			}
+		}
+
 
 		var ctx = stage.context3D;
 
